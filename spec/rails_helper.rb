@@ -67,6 +67,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.before(:suite) do
+    puts "ambiente de teste: #{Rails.env}"
     DatabaseCleaner.clean_with(:deletion)
   end
 end

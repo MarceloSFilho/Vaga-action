@@ -19,9 +19,10 @@ class ResultadosController < ApplicationController
     @resultado = Resultado.new(resultado_params)
 
     if @resultado.save
-      render json: { status: :created, location: @resultado }
+      render :json => { status: :created, location: @resultado }
     else
-      render json: { errors: @resultado.errors, status: :unprocessable_entity }
+      puts @resultado.errors.full_messages
+      render :json => { errors: @resultado.errors, status: :unprocessable_entity }
     end
   end
 
@@ -46,6 +47,6 @@ class ResultadosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resultado_params
-      params.require(:resultado).permit(:periodo, :valor_meta, :valor_realizado)
+      params.require(:resultado).permit(:periodo, :valor_meta, :valor_realizado, :cliente_id)
     end
 end

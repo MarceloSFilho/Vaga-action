@@ -32,6 +32,7 @@ RSpec.describe ResultadosController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Resultado" do
+        puts valid_attributes
         expect {
           post :create, params: {resultado: valid_attributes}, session: valid_session
         }.to change(Resultado, :count).by(1)
